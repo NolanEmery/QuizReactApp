@@ -1,9 +1,10 @@
 'use client'; //makes a client component
 import { useState } from 'react';
-import { Suspense } from 'react';
 import { numberQuestionArray } from './questions.js';
 import { booleanQuestionArray } from './questions.js';
 import { stringQuestionArray } from './questions.js';
+import { Provider } from '@/components/ui/provider';
+import { Checkbox } from '@chakra-ui/react';
 
 export default function Home() {
   const [showQuiz1, setShowQuiz1] = useState(false);
@@ -170,18 +171,26 @@ export default function Home() {
   }
 
   return (
-    <>
+    <html suppressHydrationWarning>
+      <body>
+        <Provider>
+    {/* <> */}
     {/* <img 
       src="C:\Users\nolan\QuizReactApp-master\QuizReactApp-master\Star.png"
       alt="Star" 
     /> */}
-    <form action={quiz1Handler}>
+    <form action={quiz1Handler} align="center">
     <p>
       Do you want to take quiz 1?
     </p>
     <label>Yes</label>
-    <input type="checkbox" name="quiz1">
-    </input>
+    <Checkbox.Root name="quiz1" variant="subtle">
+      <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label />
+    </Checkbox.Root>
     <button type="submit">
       Submit
     </button>
@@ -193,24 +202,60 @@ export default function Home() {
     {quiz2Question1Answer == randomQuestionAnswerPair5.answer && <p>That is correct.</p>} */}
     {/* <form action={quiz3Question1Handler}><input value={randomQuestionAnswerPair9.question} onChange={() => {}} className="question"></input><input name="quiz3Question1" className="answer"></input><button>Submit</button></form>
     {quiz3Question1Answer == randomQuestionAnswerPair9.answer && <p>That is correct.</p>} */}
-    {showQuiz1 && <form action={quiz1Question1Handler}><input value={randomQuestionAnswerPair1.question} onChange={() => {}} className="question"></input><input name="quiz1Question1" className="answer"></input><button>Submit</button></form>}
+    {showQuiz1 && <form action={quiz1Question1Handler}><input value={randomQuestionAnswerPair1.question} onChange={() => {}} className="question" id="quiz1"></input><input name="quiz1Question1" className="answer"></input><button>Submit</button></form>}
     {quiz1Question1Answer == randomQuestionAnswerPair1.answer && <p>That is correct.</p>}
-    {quiz1Question1Answer == randomQuestionAnswerPair1.answer && <form action={quiz1Question2Handler}><input value={randomQuestionAnswerPair2.question} onChange={() => {}} className="question"></input><input name="quiz1Question2" className="answer"></input><button>Submit</button></form>}
+    {quiz1Question1Answer == randomQuestionAnswerPair1.answer && <form action={quiz1Question2Handler}><input value={randomQuestionAnswerPair2.question} onChange={() => {}} className="question" id="quiz1"></input><input name="quiz1Question2" className="answer"></input><button>Submit</button></form>}
     {quiz1Question2Answer == randomQuestionAnswerPair2.answer && <p>That is correct.</p>}
-    {quiz1Question2Answer == randomQuestionAnswerPair2.answer && <form action={quiz1Question3Handler}><input value={randomQuestionAnswerPair3.question} onChange={() => {}} className="question"></input><input name="quiz1Question3" className="answer"></input><button>Submit</button></form>}
+    {quiz1Question2Answer == randomQuestionAnswerPair2.answer && <form action={quiz1Question3Handler}><input value={randomQuestionAnswerPair3.question} onChange={() => {}} className="question" id="quiz1"></input><input name="quiz1Question3" className="answer"></input><button>Submit</button></form>}
     {quiz1Question3Answer == randomQuestionAnswerPair3.answer && <p>That is correct.</p>}
-    {quiz1Question3Answer == randomQuestionAnswerPair3.answer && <form action={quiz1Question4Handler}><input value={randomQuestionAnswerPair4.question} onChange={() => {}} className="question"></input><input name="quiz1Question4" className="answer"></input><button>Submit</button></form>}
+    {quiz1Question3Answer == randomQuestionAnswerPair3.answer && <form action={quiz1Question4Handler}><input value={randomQuestionAnswerPair4.question} onChange={() => {}} className="question" id="quiz1"></input><input name="quiz1Question4" className="answer"></input><button>Submit</button></form>}
     {quiz1Question4Answer == randomQuestionAnswerPair4.answer && <p>That is correct.</p>}
-    {quiz1Question4Answer == randomQuestionAnswerPair4.answer && <form action={quiz2Handler}><p>Do you want to take quiz 2?</p><label>Yes</label><input type="checkbox" name="quiz2"></input><button>Submit</button></form>}
-    {showQuiz2 && <form action={quiz2Question1Handler}><input value={randomQuestionAnswerPair5.question} onChange={() => {}} className="question"></input><label>T</label><input type="checkbox" name="quiz2Question1" className="answer"></input><button>Submit</button></form>}
+    {quiz1Question4Answer == randomQuestionAnswerPair4.answer && <form action={quiz2Handler} align="center"><p>Do you want to take quiz 2?</p><label>Yes</label><Checkbox.Root name="quiz2" variant="subtle">
+      <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label />
+    </Checkbox.Root><button>Submit</button></form>}
+    {showQuiz2 && <form action={quiz2Question1Handler}><input value={randomQuestionAnswerPair5.question} onChange={() => {}} className="question"></input><label>T</label><Checkbox.Root name="quiz2Question1" variant="subtle">
+      <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label />
+    </Checkbox.Root><button>Submit</button></form>}
     {quiz2Question1Answer == randomQuestionAnswerPair5.answer && <p>That is correct.</p>}
-    {quiz2Question1Answer == randomQuestionAnswerPair5.answer && <form action={quiz2Question2Handler}><input value={randomQuestionAnswerPair6.question} onChange={() => {}} className="question"></input><label>T</label><input type="checkbox" name="quiz2Question2" className="answer"></input><button>Submit</button></form>}
+    {quiz2Question1Answer == randomQuestionAnswerPair5.answer && <form action={quiz2Question2Handler}><input value={randomQuestionAnswerPair6.question} onChange={() => {}} className="question"></input><label>T</label><Checkbox.Root name="quiz2Question2" variant="subtle">
+      <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label />
+    </Checkbox.Root><button>Submit</button></form>}
     {quiz2Question2Answer == randomQuestionAnswerPair6.answer && <p>That is correct.</p>}
-    {quiz2Question2Answer == randomQuestionAnswerPair6.answer && <form action={quiz2Question3Handler}><input value={randomQuestionAnswerPair7.question} onChange={() => {}} className="question"></input><label>T</label><input type="checkbox" name="quiz2Question3" className="answer"></input><button>Submit</button></form>}
+    {quiz2Question2Answer == randomQuestionAnswerPair6.answer && <form action={quiz2Question3Handler}><input value={randomQuestionAnswerPair7.question} onChange={() => {}} className="question"></input><label>T</label><Checkbox.Root name="quiz2Question3" variant="subtle">
+      <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label />
+    </Checkbox.Root><button>Submit</button></form>}
     {quiz2Question3Answer == randomQuestionAnswerPair7.answer && <p>That is correct.</p>}
-    {quiz2Question3Answer == randomQuestionAnswerPair7.answer && <form action={quiz2Question4Handler}><input value={randomQuestionAnswerPair8.question} onChange={() => {}} className="question"></input><label>T</label><input type="checkbox" name="quiz2Question4" className="answer"></input><button>Submit</button></form>}
+    {quiz2Question3Answer == randomQuestionAnswerPair7.answer && <form action={quiz2Question4Handler}><input value={randomQuestionAnswerPair8.question} onChange={() => {}} className="question"></input><label>T</label><Checkbox.Root name="quiz2Question4" variant="subtle">
+      <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label />
+    </Checkbox.Root><button>Submit</button></form>}
     {quiz2Question4Answer == randomQuestionAnswerPair8.answer && <p>That is correct.</p>}
-    {quiz2Question4Answer == randomQuestionAnswerPair8.answer && <form action={quiz3Handler}><p>Do you want to take quiz 3?</p><label>Yes</label><input type="checkbox" name="quiz3"></input><button>Submit</button></form>}
+    {quiz2Question4Answer == randomQuestionAnswerPair8.answer && <form action={quiz3Handler} align="center"><p>Do you want to take quiz 3?</p><label>Yes</label><Checkbox.Root name="quiz3" variant="subtle">
+      <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label />
+    </Checkbox.Root><button>Submit</button></form>}
     {showQuiz3 && <form action={quiz3Question1Handler}><input value={randomQuestionAnswerPair9.question} onChange={() => {}} className="question"></input><input name="quiz3Question1" className="answer"></input><button>Submit</button></form>}
     {quiz3Question1Answer == randomQuestionAnswerPair9.answer && <p>That is correct.</p>}
     {quiz3Question1Answer == randomQuestionAnswerPair9.answer && <form action={quiz3Question2Handler}><input value={randomQuestionAnswerPair10.question} onChange={() => {}} className="question"></input><input name="quiz3Question2" className="answer"></input><button>Submit</button></form>}
@@ -219,6 +264,9 @@ export default function Home() {
     {quiz3Question3Answer == randomQuestionAnswerPair11.answer && <p>That is correct.</p>}
     {quiz3Question3Answer == randomQuestionAnswerPair11.answer && <form action={quiz3Question4Handler}><input value={randomQuestionAnswerPair12.question} onChange={() => {}} className="question"></input><input name="quiz3Question4" className="answer"></input><button>Submit</button></form>}
     {quiz3Question4Answer == randomQuestionAnswerPair12.answer && <p>That is correct.</p>}
-    </>
+            </Provider>
+      </body>
+    </html>
+    // {/* </> */}
   );
 }
