@@ -4,8 +4,7 @@ import { numberQuestionArray } from './questions.js';
 import { booleanQuestionArray } from './questions.js';
 import { stringQuestionArray } from './questions.js';
 import { Provider } from '@/components/ui/provider';
-import { Checkbox } from '@chakra-ui/react';
-import { Tabs } from '@chakra-ui/react';
+import { Checkbox, Tabs, Slider } from '@chakra-ui/react';
 
 export default function Home() {
   const [showQuiz1, setShowQuiz1] = useState(false);
@@ -211,12 +210,12 @@ export default function Home() {
               }}>Quiz 3</Tabs.Trigger>
               <Tabs.Indicator />
             </Tabs.List>
-            <Tabs.Content value="quiz1"><><form action={quiz1Question1Handler}><input value={randomQuestionAnswerPair1.question} onChange={() => {}} className="question" id="quiz1"></input><input name="quiz1Question1" className="answer"></input><button>Submit</button></form>{quiz1Question1Answer == randomQuestionAnswerPair1.answer && <p>That is correct.</p>}
-    {quiz1Question1Answer == randomQuestionAnswerPair1.answer && <form action={quiz1Question2Handler}><input value={randomQuestionAnswerPair2.question} onChange={() => {}} className="question" id="quiz1"></input><input name="quiz1Question2" className="answer"></input><button>Submit</button></form>}
+            <Tabs.Content value="quiz1"><><form action={quiz1Question1Handler}><input value={randomQuestionAnswerPair1.question} onChange={() => {}} className="question" id="quiz1"></input><Slider.Root name="quiz1Question1" width="250px" max={200}><Slider.ValueText /><Slider.Control><Slider.Track><Slider.Range /></Slider.Track><Slider.Thumbs /></Slider.Control></Slider.Root><button>Submit</button></form>{quiz1Question1Answer == randomQuestionAnswerPair1.answer && <p>That is correct.</p>}
+    {quiz1Question1Answer == randomQuestionAnswerPair1.answer && <form action={quiz1Question2Handler}><input value={randomQuestionAnswerPair2.question} onChange={() => {}} className="question" id="quiz1"></input><Slider.Root name="quiz1Question2" width="250px" max={200}><Slider.ValueText /><Slider.Control><Slider.Track><Slider.Range /></Slider.Track><Slider.Thumbs /></Slider.Control></Slider.Root><button>Submit</button></form>}
     {quiz1Question2Answer == randomQuestionAnswerPair2.answer && <p>That is correct.</p>}
-    {quiz1Question2Answer == randomQuestionAnswerPair2.answer && <form action={quiz1Question3Handler}><input value={randomQuestionAnswerPair3.question} onChange={() => {}} className="question" id="quiz1"></input><input name="quiz1Question3" className="answer"></input><button>Submit</button></form>}
+    {quiz1Question2Answer == randomQuestionAnswerPair2.answer && <form action={quiz1Question3Handler}><input value={randomQuestionAnswerPair3.question} onChange={() => {}} className="question" id="quiz1"></input><Slider.Root name="quiz1Question3" width="250px" max={200}><Slider.ValueText /><Slider.Control><Slider.Track><Slider.Range /></Slider.Track><Slider.Thumbs /></Slider.Control></Slider.Root><button>Submit</button></form>}
     {quiz1Question3Answer == randomQuestionAnswerPair3.answer && <p>That is correct.</p>}
-    {quiz1Question3Answer == randomQuestionAnswerPair3.answer && <form action={quiz1Question4Handler}><input value={randomQuestionAnswerPair4.question} onChange={() => {}} className="question" id="quiz1"></input><input name="quiz1Question4" className="answer"></input><button>Submit</button></form>}
+    {quiz1Question3Answer == randomQuestionAnswerPair3.answer && <form action={quiz1Question4Handler}><input value={randomQuestionAnswerPair4.question} onChange={() => {}} className="question" id="quiz1"></input><Slider.Root name="quiz1Question4" width="250px" max={200}><Slider.ValueText /><Slider.Control><Slider.Track><Slider.Range /></Slider.Track><Slider.Thumbs /></Slider.Control></Slider.Root><button>Submit</button></form>}
     {quiz1Question4Answer == randomQuestionAnswerPair4.answer && <p>That is correct.</p>}</></Tabs.Content>
             <Tabs.Content value="quiz2"><><form action={quiz2Question1Handler}><input value={randomQuestionAnswerPair5.question} onChange={() => {}} className="question"></input><label>T</label><Checkbox.Root name="quiz2Question1" variant="subtle">
       <Checkbox.HiddenInput />
