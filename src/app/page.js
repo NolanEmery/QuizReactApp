@@ -258,7 +258,7 @@ export default function Home() {
                 <form action={quiz1Question1Handler}>
                   <input
                     value={randomQuestionAnswerPair1.question}
-                    onChange={() => {}}
+                    onChange={() => { }}
                     className="question"
                     id="quiz1"
                   ></input>
@@ -276,11 +276,14 @@ export default function Home() {
                 {quiz1Question1Answer == randomQuestionAnswerPair1.answer && (
                   <p>That is correct.</p>
                 )}
+                {quiz1Question1Answer != randomQuestionAnswerPair1.answer && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz1Question1Answer == randomQuestionAnswerPair1.answer && (
                   <form action={quiz1Question2Handler}>
                     <input
                       value={randomQuestionAnswerPair2.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                       id="quiz1"
                     ></input>
@@ -299,11 +302,14 @@ export default function Home() {
                 {quiz1Question2Answer == randomQuestionAnswerPair2.answer && (
                   <p>That is correct.</p>
                 )}
+                {(quiz1Question1Answer == randomQuestionAnswerPair1.answer) && (quiz1Question2Answer != randomQuestionAnswerPair2.answer) && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz1Question2Answer == randomQuestionAnswerPair2.answer && (
                   <form action={quiz1Question3Handler}>
                     <input
                       value={randomQuestionAnswerPair3.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                       id="quiz1"
                     ></input>
@@ -322,11 +328,14 @@ export default function Home() {
                 {quiz1Question3Answer == randomQuestionAnswerPair3.answer && (
                   <p>That is correct.</p>
                 )}
+                {(quiz1Question2Answer == randomQuestionAnswerPair2.answer) && (quiz1Question3Answer != randomQuestionAnswerPair3.answer) && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz1Question3Answer == randomQuestionAnswerPair3.answer && (
                   <form action={quiz1Question4Handler}>
                     <input
                       value={randomQuestionAnswerPair4.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                       id="quiz1"
                     ></input>
@@ -345,6 +354,9 @@ export default function Home() {
                 {quiz1Question4Answer == randomQuestionAnswerPair4.answer && (
                   <p>That is correct.</p>
                 )}
+                {(quiz1Question3Answer == randomQuestionAnswerPair3.answer) && (quiz1Question4Answer != randomQuestionAnswerPair4.answer) && (
+                  <p>That is incorrect.</p>
+                )}
               </>
             </Tabs.Content>
             <Tabs.Content value="quiz2">
@@ -352,7 +364,7 @@ export default function Home() {
                 <form action={quiz2Question1Handler}>
                   <input
                     value={randomQuestionAnswerPair5.question}
-                    onChange={() => {}}
+                    onChange={() => { }}
                     className="question"
                   ></input>
                   <label>T</label>
@@ -368,11 +380,14 @@ export default function Home() {
                 {quiz2Question1Answer == randomQuestionAnswerPair5.answer && (
                   <p>That is correct.</p>
                 )}
+                {quiz2Question1Answer != randomQuestionAnswerPair5.answer && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz2Question1Answer == randomQuestionAnswerPair5.answer && (
                   <form action={quiz2Question2Handler}>
                     <input
                       value={randomQuestionAnswerPair6.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                     ></input>
                     <label>T</label>
@@ -389,11 +404,14 @@ export default function Home() {
                 {quiz2Question2Answer == randomQuestionAnswerPair6.answer && (
                   <p>That is correct.</p>
                 )}
+                {(quiz2Question1Answer == randomQuestionAnswerPair5.answer) && (quiz2Question2Answer != randomQuestionAnswerPair6.answer) && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz2Question2Answer == randomQuestionAnswerPair6.answer && (
                   <form action={quiz2Question3Handler}>
                     <input
                       value={randomQuestionAnswerPair7.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                     ></input>
                     <label>T</label>
@@ -410,11 +428,14 @@ export default function Home() {
                 {quiz2Question3Answer == randomQuestionAnswerPair7.answer && (
                   <p>That is correct.</p>
                 )}
+                {(quiz2Question2Answer == randomQuestionAnswerPair6.answer) && (quiz2Question3Answer != randomQuestionAnswerPair7.answer) && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz2Question3Answer == randomQuestionAnswerPair7.answer && (
                   <form action={quiz2Question4Handler}>
                     <input
                       value={randomQuestionAnswerPair8.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                     ></input>
                     <label>T</label>
@@ -431,6 +452,9 @@ export default function Home() {
                 {quiz2Question4Answer == randomQuestionAnswerPair8.answer && (
                   <p>That is correct.</p>
                 )}
+                {(quiz2Question3Answer == randomQuestionAnswerPair7.answer) && (quiz2Question4Answer != randomQuestionAnswerPair8.answer) && (
+                  <p>That is incorrect.</p>
+                )}
               </>
             </Tabs.Content>
             <Tabs.Content value="quiz3">
@@ -438,7 +462,7 @@ export default function Home() {
                 <form action={quiz3Question1Handler}>
                   <input
                     value={randomQuestionAnswerPair9.question}
-                    onChange={() => {}}
+                    onChange={() => { }}
                     className="question"
                   ></input>
                   <input name="quiz3Question1" className="answer"></input>
@@ -447,11 +471,14 @@ export default function Home() {
                 {quiz3Question1Answer == randomQuestionAnswerPair9.answer && (
                   <p>That is correct.</p>
                 )}
+                {quiz3Question1Answer != randomQuestionAnswerPair9.answer && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz3Question1Answer == randomQuestionAnswerPair9.answer && (
                   <form action={quiz3Question2Handler}>
                     <input
                       value={randomQuestionAnswerPair10.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                     ></input>
                     <input name="quiz3Question2" className="answer"></input>
@@ -461,11 +488,14 @@ export default function Home() {
                 {quiz3Question2Answer == randomQuestionAnswerPair10.answer && (
                   <p>That is correct.</p>
                 )}
+                {(quiz3Question1Answer == randomQuestionAnswerPair9.answer) && (quiz3Question2Answer != randomQuestionAnswerPair10.answer) && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz3Question2Answer == randomQuestionAnswerPair10.answer && (
                   <form action={quiz3Question3Handler}>
                     <input
                       value={randomQuestionAnswerPair11.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                     ></input>
                     <input name="quiz3Question3" className="answer"></input>
@@ -475,11 +505,14 @@ export default function Home() {
                 {quiz3Question3Answer == randomQuestionAnswerPair11.answer && (
                   <p>That is correct.</p>
                 )}
+                {(quiz3Question2Answer == randomQuestionAnswerPair10.answer) && (quiz3Question3Answer != randomQuestionAnswerPair11.answer) && (
+                  <p>That is incorrect.</p>
+                )}
                 {quiz3Question3Answer == randomQuestionAnswerPair11.answer && (
                   <form action={quiz3Question4Handler}>
                     <input
                       value={randomQuestionAnswerPair12.question}
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="question"
                     ></input>
                     <input name="quiz3Question4" className="answer"></input>
@@ -488,6 +521,9 @@ export default function Home() {
                 )}
                 {quiz3Question4Answer == randomQuestionAnswerPair12.answer && (
                   <p>That is correct.</p>
+                )}
+                {(quiz3Question3Answer == randomQuestionAnswerPair11.answer) && (quiz3Question4Answer != randomQuestionAnswerPair12.answer) && (
+                  <p>That is incorrect.</p>
                 )}
               </>
             </Tabs.Content>
