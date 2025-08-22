@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { numberQuestionArray, booleanQuestionArray, stringQuestionArray } from "./questions.js";
 import { Provider } from "@/components/ui/provider";
-import { Checkbox, Tabs, Slider, Input } from "@chakra-ui/react";
+import { Checkbox, Tabs, Slider } from "@chakra-ui/react";
 
 export default function Home() {
   const [showQuiz1, setShowQuiz1] = useState(false);
@@ -199,9 +199,9 @@ export default function Home() {
   }
 
   return (
-    <html suppressHydrationWarning>
-      <body>
-        <Provider>
+    <html suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true}>
+        <Provider suppressHydrationWarning={true}>
           <Tabs.Root fitted>
             <Tabs.List>
               <Tabs.Trigger
@@ -219,7 +219,7 @@ export default function Home() {
               >
                 Quiz 1
               </Tabs.Trigger>
-              <Tabs.Indicator />
+              <Tabs.Indicator value="quiz1" />
               <Tabs.Trigger
                 value="quiz2"
                 onClick={() => {
@@ -235,7 +235,7 @@ export default function Home() {
               >
                 Quiz 2
               </Tabs.Trigger>
-              <Tabs.Indicator />
+              <Tabs.Indicator value="quiz2" />
               <Tabs.Trigger
                 value="quiz3"
                 onClick={() => {
@@ -251,7 +251,7 @@ export default function Home() {
               >
                 Quiz 3
               </Tabs.Trigger>
-              <Tabs.Indicator />
+              <Tabs.Indicator value="quiz3" />
             </Tabs.List>
             <Tabs.Content value="quiz1">
               <>
@@ -269,6 +269,7 @@ export default function Home() {
                         <Slider.Range />
                       </Slider.Track>
                       <Slider.Thumbs />
+                      <Slider.Marks marks={[{value: 0, label: "0"}, {value: 50, label: "50"}, {value: 100, label: "100"}, {value: 150, label: "150"}, {value: 200, label: "200"}]} />
                     </Slider.Control>
                   </Slider.Root>
                   <button>Submit</button>
@@ -294,6 +295,7 @@ export default function Home() {
                           <Slider.Range />
                         </Slider.Track>
                         <Slider.Thumbs />
+                        <Slider.Marks marks={[{value: 0, label: "0"}, {value: 50, label: "50"}, {value: 100, label: "100"}, {value: 150, label: "150"}, {value: 200, label: "200"}]} />
                       </Slider.Control>
                     </Slider.Root>
                     <button>Submit</button>
@@ -320,6 +322,7 @@ export default function Home() {
                           <Slider.Range />
                         </Slider.Track>
                         <Slider.Thumbs />
+                        <Slider.Marks marks={[{value: 0, label: "0"}, {value: 50, label: "50"}, {value: 100, label: "100"}, {value: 150, label: "150"}, {value: 200, label: "200"}]} />
                       </Slider.Control>
                     </Slider.Root>
                     <button>Submit</button>
@@ -346,7 +349,8 @@ export default function Home() {
                           <Slider.Range />
                         </Slider.Track>
                         <Slider.Thumbs />
-                      </Slider.Control>
+                        <Slider.Marks marks={[{value: 0, label: "0"}, {value: 50, label: "50"}, {value: 100, label: "100"}, {value: 150, label: "150"}, {value: 200, label: "200"}]} />
+                       </Slider.Control>
                     </Slider.Root>
                     <button>Submit</button>
                   </form>
