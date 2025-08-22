@@ -138,37 +138,41 @@ export default function Home() {
   }
 
   function quiz2Question1Handler(formData) {
-    const quiz2Question1Response = formData.get("quiz2Question1"); // transform a boolean to a string
-    if (quiz2Question1Response) {
+    const quiz2Question1ResponsePt1 = formData.get("quiz2Question1Pt1"); // transform a boolean to a string
+    const quiz2Question1ResponsePt2 = formData.get("quiz2Question1Pt2");
+    if (quiz2Question1ResponsePt1 && ! quiz2Question1ResponsePt2) {
       setQuiz2Question1Answer("true");
-    } else {
+    } else if (!quiz2Question1ResponsePt1 && quiz2Question1ResponsePt2) {
       setQuiz2Question1Answer("false");
     }
   }
 
   function quiz2Question2Handler(formData) {
-    const quiz2Question2Response = formData.get("quiz2Question2");
-    if (quiz2Question2Response) {
+    const quiz2Question2ResponsePt1 = formData.get("quiz2Question2Pt1");
+    const quiz2Question2ResponsePt2 = formData.get("quiz2Question2Pt2");
+    if (quiz2Question2ResponsePt1 && !quiz2Question2ResponsePt2) {
       setQuiz2Question2Answer("true");
-    } else {
+    } else if (!quiz2Question2ResponsePt1 && quiz2Question2ResponsePt2) {
       setQuiz2Question2Answer("false");
     }
   }
 
   function quiz2Question3Handler(formData) {
-    const quiz2Question3Response = formData.get("quiz2Question3");
-    if (quiz2Question3Response) {
+    const quiz2Question3ResponsePt1 = formData.get("quiz2Question3Pt1");
+    const quiz2Question3ResponsePt2 = formData.get("quiz2Question3Pt2");
+    if (quiz2Question3ResponsePt1 && !quiz2Question3ResponsePt2) {
       setQuiz2Question3Answer("true");
-    } else {
+    } else if (!quiz2Question3ResponsePt1 && quiz2Question3ResponsePt2) {
       setQuiz2Question3Answer("false");
     }
   }
 
   function quiz2Question4Handler(formData) {
-    const quiz2Question4Response = formData.get("quiz2Question4");
-    if (quiz2Question4Response) {
+    const quiz2Question4ResponsePt1 = formData.get("quiz2Question4Pt1");
+    const quiz2Question4ResponsePt2 = formData.get("quiz2Question4Pt2");
+    if (quiz2Question4ResponsePt1 && !quiz2Question4ResponsePt2) {
       setQuiz2Question4Answer("true");
-    } else {
+    } else if (!quiz2Question4ResponsePt1 && quiz2Question4ResponsePt2) {
       setQuiz2Question4Answer("false");
     }
   }
@@ -372,7 +376,15 @@ export default function Home() {
                     className="question"
                   ></input>
                   <label>T</label>
-                  <Checkbox.Root name="quiz2Question1" variant="subtle">
+                  <Checkbox.Root name="quiz2Question1Pt1" variant="subtle" size="lg">
+                    <Checkbox.HiddenInput />
+                    <Checkbox.Control>
+                      <Checkbox.Indicator />
+                    </Checkbox.Control>
+                    <Checkbox.Label />
+                  </Checkbox.Root>
+                  <label>F</label>
+                  <Checkbox.Root name="quiz2Question1Pt2" variant="subtle" size="lg">
                     <Checkbox.HiddenInput />
                     <Checkbox.Control>
                       <Checkbox.Indicator />
@@ -395,7 +407,15 @@ export default function Home() {
                       className="question"
                     ></input>
                     <label>T</label>
-                    <Checkbox.Root name="quiz2Question2" variant="subtle">
+                    <Checkbox.Root name="quiz2Question2Pt1" variant="subtle" size="lg">
+                      <Checkbox.HiddenInput />
+                      <Checkbox.Control>
+                        <Checkbox.Indicator />
+                      </Checkbox.Control>
+                      <Checkbox.Label />
+                    </Checkbox.Root>
+                    <label>F</label>
+                    <Checkbox.Root name="quiz2Question2Pt2" variant="subtle" size="lg">
                       <Checkbox.HiddenInput />
                       <Checkbox.Control>
                         <Checkbox.Indicator />
@@ -419,7 +439,15 @@ export default function Home() {
                       className="question"
                     ></input>
                     <label>T</label>
-                    <Checkbox.Root name="quiz2Question3" variant="subtle">
+                    <Checkbox.Root name="quiz2Question3Pt1" variant="subtle" size="lg">
+                      <Checkbox.HiddenInput />
+                      <Checkbox.Control>
+                        <Checkbox.Indicator />
+                      </Checkbox.Control>
+                      <Checkbox.Label />
+                    </Checkbox.Root>
+                    <label>F</label>
+                    <Checkbox.Root name="quiz2Question3Pt2" variant="subtle" size="lg">
                       <Checkbox.HiddenInput />
                       <Checkbox.Control>
                         <Checkbox.Indicator />
@@ -443,7 +471,15 @@ export default function Home() {
                       className="question"
                     ></input>
                     <label>T</label>
-                    <Checkbox.Root name="quiz2Question4" variant="subtle">
+                    <Checkbox.Root name="quiz2Question4Pt1" variant="subtle" size="lg">
+                      <Checkbox.HiddenInput />
+                      <Checkbox.Control>
+                        <Checkbox.Indicator />
+                      </Checkbox.Control>
+                      <Checkbox.Label />
+                    </Checkbox.Root>
+                    <label>F</label>
+                    <Checkbox.Root name="quiz2Question4Pt2" variant="subtle" size="lg">
                       <Checkbox.HiddenInput />
                       <Checkbox.Control>
                         <Checkbox.Indicator />
