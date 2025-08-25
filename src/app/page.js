@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { numberQuestionArray, booleanQuestionArray, stringQuestionArray } from "./questions.js";
 import { Provider } from "@/components/ui/provider";
-import { Checkbox, Tabs, Slider } from "@chakra-ui/react";
+import { Checkbox, Tabs, Slider, Wrap, Center } from "@chakra-ui/react";
 
 export default function Home() {
   const [showQuiz1, setShowQuiz1] = useState(false);
@@ -140,7 +140,7 @@ export default function Home() {
   function quiz2Question1Handler(formData) {
     const quiz2Question1ResponsePt1 = formData.get("quiz2Question1Pt1"); // transform a boolean to a string
     const quiz2Question1ResponsePt2 = formData.get("quiz2Question1Pt2");
-    if (quiz2Question1ResponsePt1 && ! quiz2Question1ResponsePt2) {
+    if (quiz2Question1ResponsePt1 && !quiz2Question1ResponsePt2) {
       setQuiz2Question1Answer("true");
     } else if (!quiz2Question1ResponsePt1 && quiz2Question1ResponsePt2) {
       setQuiz2Question1Answer("false");
@@ -205,7 +205,7 @@ export default function Home() {
   return (
     <html suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
-        <Provider suppressHydrationWarning={true}>
+        <Provider>
           <Tabs.Root fitted>
             <Tabs.List>
               <Tabs.Trigger
@@ -259,312 +259,376 @@ export default function Home() {
             </Tabs.List>
             <Tabs.Content value="quiz1">
               <>
-                <form action={quiz1Question1Handler}>
-                  <input
-                    value={randomQuestionAnswerPair1.question}
-                    onChange={() => { }}
-                    className="question"
-                    id="quiz1"
-                  ></input>
-                  <Slider.Root name="quiz1Question1" width="250px" max={200}>
-                    <Slider.ValueText />
-                    <Slider.Control>
-                      <Slider.Track>
-                        <Slider.Range />
-                      </Slider.Track>
-                      <Slider.Thumbs />
-                      <Slider.Marks marks={[{value: 0, label: "0"}, {value: 50, label: "50"}, {value: 100, label: "100"}, {value: 150, label: "150"}, {value: 200, label: "200"}]} />
-                    </Slider.Control>
-                  </Slider.Root>
-                  <button>Submit</button>
-                </form>
-                {quiz1Question1Answer == randomQuestionAnswerPair1.answer && (
-                  <p>That is correct.</p>
-                )}
-                {quiz1Question1Answer != randomQuestionAnswerPair1.answer && (
-                  <p>That is incorrect.</p>
-                )}
-                {quiz1Question1Answer == randomQuestionAnswerPair1.answer && (
-                  <form action={quiz1Question2Handler}>
+                <Center>
+                  <form action={quiz1Question1Handler}>
                     <input
-                      value={randomQuestionAnswerPair2.question}
+                      value={randomQuestionAnswerPair1.question}
                       onChange={() => { }}
                       className="question"
                       id="quiz1"
                     ></input>
-                    <Slider.Root name="quiz1Question2" width="250px" max={200}>
+                    <Slider.Root name="quiz1Question1" width="250px" max={200}>
                       <Slider.ValueText />
                       <Slider.Control>
                         <Slider.Track>
                           <Slider.Range />
                         </Slider.Track>
                         <Slider.Thumbs />
-                        <Slider.Marks marks={[{value: 0, label: "0"}, {value: 50, label: "50"}, {value: 100, label: "100"}, {value: 150, label: "150"}, {value: 200, label: "200"}]} />
+                        <Slider.Marks marks={[{ value: 0, label: "0" }, { value: 50, label: "50" }, { value: 100, label: "100" }, { value: 150, label: "150" }, { value: 200, label: "200" }]} />
                       </Slider.Control>
                     </Slider.Root>
                     <button>Submit</button>
                   </form>
+                </Center>
+                <Center>
+                  {quiz1Question1Answer == randomQuestionAnswerPair1.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {quiz1Question1Answer != randomQuestionAnswerPair1.answer && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
+                {quiz1Question1Answer == randomQuestionAnswerPair1.answer && (
+                  <Center>
+                    <form action={quiz1Question2Handler}>
+                      <input
+                        value={randomQuestionAnswerPair2.question}
+                        onChange={() => { }}
+                        className="question"
+                        id="quiz1"
+                      ></input>
+                      <Slider.Root name="quiz1Question2" width="250px" max={200}>
+                        <Slider.ValueText />
+                        <Slider.Control>
+                          <Slider.Track>
+                            <Slider.Range />
+                          </Slider.Track>
+                          <Slider.Thumbs />
+                          <Slider.Marks marks={[{ value: 0, label: "0" }, { value: 50, label: "50" }, { value: 100, label: "100" }, { value: 150, label: "150" }, { value: 200, label: "200" }]} />
+                        </Slider.Control>
+                      </Slider.Root>
+                      <button>Submit</button>
+                    </form>
+                  </Center>
                 )}
+                <Center>
+                  {quiz1Question2Answer == randomQuestionAnswerPair2.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz1Question1Answer == randomQuestionAnswerPair1.answer) && (quiz1Question2Answer != randomQuestionAnswerPair2.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
                 {quiz1Question2Answer == randomQuestionAnswerPair2.answer && (
-                  <p>That is correct.</p>
+                  <Center>
+                    <form action={quiz1Question3Handler}>
+                      <input
+                        value={randomQuestionAnswerPair3.question}
+                        onChange={() => { }}
+                        className="question"
+                        id="quiz1"
+                      ></input>
+                      <Slider.Root name="quiz1Question3" width="250px" max={200}>
+                        <Slider.ValueText />
+                        <Slider.Control>
+                          <Slider.Track>
+                            <Slider.Range />
+                          </Slider.Track>
+                          <Slider.Thumbs />
+                          <Slider.Marks marks={[{ value: 0, label: "0" }, { value: 50, label: "50" }, { value: 100, label: "100" }, { value: 150, label: "150" }, { value: 200, label: "200" }]} />
+                        </Slider.Control>
+                      </Slider.Root>
+                      <button>Submit</button>
+                    </form>
+                  </Center>
                 )}
-                {(quiz1Question1Answer == randomQuestionAnswerPair1.answer) && (quiz1Question2Answer != randomQuestionAnswerPair2.answer) && (
-                  <p>That is incorrect.</p>
-                )}
-                {quiz1Question2Answer == randomQuestionAnswerPair2.answer && (
-                  <form action={quiz1Question3Handler}>
-                    <input
-                      value={randomQuestionAnswerPair3.question}
-                      onChange={() => { }}
-                      className="question"
-                      id="quiz1"
-                    ></input>
-                    <Slider.Root name="quiz1Question3" width="250px" max={200}>
-                      <Slider.ValueText />
-                      <Slider.Control>
-                        <Slider.Track>
-                          <Slider.Range />
-                        </Slider.Track>
-                        <Slider.Thumbs />
-                        <Slider.Marks marks={[{value: 0, label: "0"}, {value: 50, label: "50"}, {value: 100, label: "100"}, {value: 150, label: "150"}, {value: 200, label: "200"}]} />
-                      </Slider.Control>
-                    </Slider.Root>
-                    <button>Submit</button>
-                  </form>
-                )}
+                <Center>
+                  {quiz1Question3Answer == randomQuestionAnswerPair3.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz1Question2Answer == randomQuestionAnswerPair2.answer) && (quiz1Question3Answer != randomQuestionAnswerPair3.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
                 {quiz1Question3Answer == randomQuestionAnswerPair3.answer && (
-                  <p>That is correct.</p>
+                  <Center>
+                    <form action={quiz1Question4Handler}>
+                      <input
+                        value={randomQuestionAnswerPair4.question}
+                        onChange={() => { }}
+                        className="question"
+                        id="quiz1"
+                      ></input>
+                      <Slider.Root name="quiz1Question4" width="250px" max={200}>
+                        <Slider.ValueText />
+                        <Slider.Control>
+                          <Slider.Track>
+                            <Slider.Range />
+                          </Slider.Track>
+                          <Slider.Thumbs />
+                          <Slider.Marks marks={[{ value: 0, label: "0" }, { value: 50, label: "50" }, { value: 100, label: "100" }, { value: 150, label: "150" }, { value: 200, label: "200" }]} />
+                        </Slider.Control>
+                      </Slider.Root>
+                      <button>Submit</button>
+                    </form>
+                  </Center>
                 )}
-                {(quiz1Question2Answer == randomQuestionAnswerPair2.answer) && (quiz1Question3Answer != randomQuestionAnswerPair3.answer) && (
-                  <p>That is incorrect.</p>
-                )}
-                {quiz1Question3Answer == randomQuestionAnswerPair3.answer && (
-                  <form action={quiz1Question4Handler}>
-                    <input
-                      value={randomQuestionAnswerPair4.question}
-                      onChange={() => { }}
-                      className="question"
-                      id="quiz1"
-                    ></input>
-                    <Slider.Root name="quiz1Question4" width="250px" max={200}>
-                      <Slider.ValueText />
-                      <Slider.Control>
-                        <Slider.Track>
-                          <Slider.Range />
-                        </Slider.Track>
-                        <Slider.Thumbs />
-                        <Slider.Marks marks={[{value: 0, label: "0"}, {value: 50, label: "50"}, {value: 100, label: "100"}, {value: 150, label: "150"}, {value: 200, label: "200"}]} />
-                       </Slider.Control>
-                    </Slider.Root>
-                    <button>Submit</button>
-                  </form>
-                )}
-                {quiz1Question4Answer == randomQuestionAnswerPair4.answer && (
-                  <p>That is correct.</p>
-                )}
-                {(quiz1Question3Answer == randomQuestionAnswerPair3.answer) && (quiz1Question4Answer != randomQuestionAnswerPair4.answer) && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  {quiz1Question4Answer == randomQuestionAnswerPair4.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz1Question3Answer == randomQuestionAnswerPair3.answer) && (quiz1Question4Answer != randomQuestionAnswerPair4.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
               </>
             </Tabs.Content>
             <Tabs.Content value="quiz2">
               <>
-                <form action={quiz2Question1Handler}>
-                  <input
-                    value={randomQuestionAnswerPair5.question}
-                    onChange={() => { }}
-                    className="question"
-                  ></input>
-                  <label>T</label>
-                  <Checkbox.Root name="quiz2Question1Pt1" variant="subtle" size="lg">
-                    <Checkbox.HiddenInput />
-                    <Checkbox.Control>
-                      <Checkbox.Indicator />
-                    </Checkbox.Control>
-                    <Checkbox.Label />
-                  </Checkbox.Root>
-                  <label>F</label>
-                  <Checkbox.Root name="quiz2Question1Pt2" variant="subtle" size="lg">
-                    <Checkbox.HiddenInput />
-                    <Checkbox.Control>
-                      <Checkbox.Indicator />
-                    </Checkbox.Control>
-                    <Checkbox.Label />
-                  </Checkbox.Root>
-                  <button>Submit</button>
-                </form>
-                {quiz2Question1Answer == randomQuestionAnswerPair5.answer && (
-                  <p>That is correct.</p>
-                )}
-                {quiz2Question1Answer != randomQuestionAnswerPair5.answer && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  <form action={quiz2Question1Handler}>
+                    <Wrap>
+                      <input
+                        value={randomQuestionAnswerPair5.question}
+                        onChange={() => { }}
+                        className="question"
+                      ></input>
+                      <Checkbox.Root name="quiz2Question1Pt1" variant="subtle" size="lg">
+                        <Checkbox.HiddenInput />
+                        <Checkbox.Label>T</Checkbox.Label>
+                        <Checkbox.Control>
+                          <Checkbox.Indicator />
+                        </Checkbox.Control>
+                        <Checkbox.Label />
+                      </Checkbox.Root>
+                      <Checkbox.Root name="quiz2Question1Pt2" variant="subtle" size="lg">
+                        <Checkbox.HiddenInput />
+                        <Checkbox.Label>F</Checkbox.Label>
+                        <Checkbox.Control>
+                          <Checkbox.Indicator />
+                        </Checkbox.Control>
+                        <Checkbox.Label />
+                      </Checkbox.Root>
+                      <button>Submit</button>
+                    </Wrap>
+                  </form>
+                </Center>
+                <Center>
+                  {quiz2Question1Answer == randomQuestionAnswerPair5.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {quiz2Question1Answer != randomQuestionAnswerPair5.answer && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
                 {quiz2Question1Answer == randomQuestionAnswerPair5.answer && (
                   <form action={quiz2Question2Handler}>
-                    <input
-                      value={randomQuestionAnswerPair6.question}
-                      onChange={() => { }}
-                      className="question"
-                    ></input>
-                    <label>T</label>
-                    <Checkbox.Root name="quiz2Question2Pt1" variant="subtle" size="lg">
-                      <Checkbox.HiddenInput />
-                      <Checkbox.Control>
-                        <Checkbox.Indicator />
-                      </Checkbox.Control>
-                      <Checkbox.Label />
-                    </Checkbox.Root>
-                    <label>F</label>
-                    <Checkbox.Root name="quiz2Question2Pt2" variant="subtle" size="lg">
-                      <Checkbox.HiddenInput />
-                      <Checkbox.Control>
-                        <Checkbox.Indicator />
-                      </Checkbox.Control>
-                      <Checkbox.Label />
-                    </Checkbox.Root>
-                    <button>Submit</button>
+                    <Center>
+                      <Wrap>
+                        <input
+                          value={randomQuestionAnswerPair6.question}
+                          onChange={() => { }}
+                          className="question"
+                        ></input>
+                        <Checkbox.Root name="quiz2Question2Pt1" variant="subtle" size="lg">
+                          <Checkbox.HiddenInput />
+                          <Checkbox.Label>T</Checkbox.Label>
+                          <Checkbox.Control>
+                            <Checkbox.Indicator />
+                          </Checkbox.Control>
+                          <Checkbox.Label />
+                        </Checkbox.Root>
+                        <Checkbox.Root name="quiz2Question2Pt2" variant="subtle" size="lg">
+                          <Checkbox.HiddenInput />
+                          <Checkbox.Label>F</Checkbox.Label>
+                          <Checkbox.Control>
+                            <Checkbox.Indicator />
+                          </Checkbox.Control>
+                          <Checkbox.Label />
+                        </Checkbox.Root>
+                        <button>Submit</button>
+                      </Wrap>
+                    </Center>
                   </form>
                 )}
-                {quiz2Question2Answer == randomQuestionAnswerPair6.answer && (
-                  <p>That is correct.</p>
-                )}
-                {(quiz2Question1Answer == randomQuestionAnswerPair5.answer) && (quiz2Question2Answer != randomQuestionAnswerPair6.answer) && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  {quiz2Question2Answer == randomQuestionAnswerPair6.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz2Question1Answer == randomQuestionAnswerPair5.answer) && (quiz2Question2Answer != randomQuestionAnswerPair6.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
                 {quiz2Question2Answer == randomQuestionAnswerPair6.answer && (
                   <form action={quiz2Question3Handler}>
-                    <input
-                      value={randomQuestionAnswerPair7.question}
-                      onChange={() => { }}
-                      className="question"
-                    ></input>
-                    <label>T</label>
-                    <Checkbox.Root name="quiz2Question3Pt1" variant="subtle" size="lg">
-                      <Checkbox.HiddenInput />
-                      <Checkbox.Control>
-                        <Checkbox.Indicator />
-                      </Checkbox.Control>
-                      <Checkbox.Label />
-                    </Checkbox.Root>
-                    <label>F</label>
-                    <Checkbox.Root name="quiz2Question3Pt2" variant="subtle" size="lg">
-                      <Checkbox.HiddenInput />
-                      <Checkbox.Control>
-                        <Checkbox.Indicator />
-                      </Checkbox.Control>
-                      <Checkbox.Label />
-                    </Checkbox.Root>
-                    <button>Submit</button>
+                    <Center>
+                      <Wrap>
+                        <input
+                          value={randomQuestionAnswerPair7.question}
+                          onChange={() => { }}
+                          className="question"
+                        ></input>
+                        <Checkbox.Root name="quiz2Question3Pt1" variant="subtle" size="lg">
+                          <Checkbox.HiddenInput />
+                          <Checkbox.Label>T</Checkbox.Label>
+                          <Checkbox.Control>
+                            <Checkbox.Indicator />
+                          </Checkbox.Control>
+                          <Checkbox.Label />
+                        </Checkbox.Root>
+                        <Checkbox.Root name="quiz2Question3Pt2" variant="subtle" size="lg">
+                          <Checkbox.HiddenInput />
+                          <Checkbox.Label>F</Checkbox.Label>
+                          <Checkbox.Control>
+                            <Checkbox.Indicator />
+                          </Checkbox.Control>
+                          <Checkbox.Label />
+                        </Checkbox.Root>
+                        <button>Submit</button>
+                      </Wrap>
+                    </Center>
                   </form>
                 )}
-                {quiz2Question3Answer == randomQuestionAnswerPair7.answer && (
-                  <p>That is correct.</p>
-                )}
-                {(quiz2Question2Answer == randomQuestionAnswerPair6.answer) && (quiz2Question3Answer != randomQuestionAnswerPair7.answer) && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  {quiz2Question3Answer == randomQuestionAnswerPair7.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz2Question2Answer == randomQuestionAnswerPair6.answer) && (quiz2Question3Answer != randomQuestionAnswerPair7.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
                 {quiz2Question3Answer == randomQuestionAnswerPair7.answer && (
                   <form action={quiz2Question4Handler}>
-                    <input
-                      value={randomQuestionAnswerPair8.question}
-                      onChange={() => { }}
-                      className="question"
-                    ></input>
-                    <label>T</label>
-                    <Checkbox.Root name="quiz2Question4Pt1" variant="subtle" size="lg">
-                      <Checkbox.HiddenInput />
-                      <Checkbox.Control>
-                        <Checkbox.Indicator />
-                      </Checkbox.Control>
-                      <Checkbox.Label />
-                    </Checkbox.Root>
-                    <label>F</label>
-                    <Checkbox.Root name="quiz2Question4Pt2" variant="subtle" size="lg">
-                      <Checkbox.HiddenInput />
-                      <Checkbox.Control>
-                        <Checkbox.Indicator />
-                      </Checkbox.Control>
-                      <Checkbox.Label />
-                    </Checkbox.Root>
-                    <button>Submit</button>
+                    <Center>
+                      <Wrap>
+                        <input
+                          value={randomQuestionAnswerPair8.question}
+                          onChange={() => { }}
+                          className="question"
+                        ></input>
+                        <Checkbox.Root name="quiz2Question4Pt1" variant="subtle" size="lg">
+                          <Checkbox.HiddenInput />
+                          <Checkbox.Label>T</Checkbox.Label>
+                          <Checkbox.Control>
+                            <Checkbox.Indicator />
+                          </Checkbox.Control>
+                          <Checkbox.Label />
+                        </Checkbox.Root>
+                        <Checkbox.Root name="quiz2Question4Pt2" variant="subtle" size="lg">
+                          <Checkbox.HiddenInput />
+                          <Checkbox.Label>F</Checkbox.Label>
+                          <Checkbox.Control>
+                            <Checkbox.Indicator />
+                          </Checkbox.Control>
+                          <Checkbox.Label />
+                        </Checkbox.Root>
+                        <button>Submit</button>
+                      </Wrap>
+                    </Center>
                   </form>
                 )}
-                {quiz2Question4Answer == randomQuestionAnswerPair8.answer && (
-                  <p>That is correct.</p>
-                )}
-                {(quiz2Question3Answer == randomQuestionAnswerPair7.answer) && (quiz2Question4Answer != randomQuestionAnswerPair8.answer) && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  {quiz2Question4Answer == randomQuestionAnswerPair8.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz2Question3Answer == randomQuestionAnswerPair7.answer) && (quiz2Question4Answer != randomQuestionAnswerPair8.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
               </>
             </Tabs.Content>
             <Tabs.Content value="quiz3">
               <>
                 <form action={quiz3Question1Handler}>
-                  <input
-                    value={randomQuestionAnswerPair9.question}
-                    onChange={() => { }}
-                    className="question"
-                  ></input>
-                  <input name="quiz3Question1" className="answer"></input>
-                  <button>Submit</button>
+                  <Center>
+                    <Wrap>
+                      <input
+                        value={randomQuestionAnswerPair9.question}
+                        onChange={() => { }}
+                        className="question"
+                      ></input>
+                      <input name="quiz3Question1" className="answer"></input>
+                      <button>Submit</button>
+                    </Wrap>
+                  </Center>
                 </form>
-                {quiz3Question1Answer == randomQuestionAnswerPair9.answer && (
-                  <p>That is correct.</p>
-                )}
-                {quiz3Question1Answer != randomQuestionAnswerPair9.answer && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  {quiz3Question1Answer == randomQuestionAnswerPair9.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {quiz3Question1Answer != randomQuestionAnswerPair9.answer && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
                 {quiz3Question1Answer == randomQuestionAnswerPair9.answer && (
                   <form action={quiz3Question2Handler}>
-                    <input
-                      value={randomQuestionAnswerPair10.question}
-                      onChange={() => { }}
-                      className="question"
-                    ></input>
-                    <input name="quiz3Question2" className="answer"></input>
-                    <button>Submit</button>
+                    <Center>
+                      <Wrap>
+                        <input
+                          value={randomQuestionAnswerPair10.question}
+                          onChange={() => { }}
+                          className="question"
+                        ></input>
+                        <input name="quiz3Question2" className="answer"></input>
+                        <button>Submit</button>
+                      </Wrap>
+                    </Center>
                   </form>
                 )}
-                {quiz3Question2Answer == randomQuestionAnswerPair10.answer && (
-                  <p>That is correct.</p>
-                )}
-                {(quiz3Question1Answer == randomQuestionAnswerPair9.answer) && (quiz3Question2Answer != randomQuestionAnswerPair10.answer) && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  {quiz3Question2Answer == randomQuestionAnswerPair10.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz3Question1Answer == randomQuestionAnswerPair9.answer) && (quiz3Question2Answer != randomQuestionAnswerPair10.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
                 {quiz3Question2Answer == randomQuestionAnswerPair10.answer && (
                   <form action={quiz3Question3Handler}>
-                    <input
-                      value={randomQuestionAnswerPair11.question}
-                      onChange={() => { }}
-                      className="question"
-                    ></input>
-                    <input name="quiz3Question3" className="answer"></input>
-                    <button>Submit</button>
+                    <Center>
+                      <Wrap>
+                        <input
+                          value={randomQuestionAnswerPair11.question}
+                          onChange={() => { }}
+                          className="question"
+                        ></input>
+                        <input name="quiz3Question3" className="answer"></input>
+                        <button>Submit</button>
+                      </Wrap>
+                    </Center>
                   </form>
                 )}
-                {quiz3Question3Answer == randomQuestionAnswerPair11.answer && (
-                  <p>That is correct.</p>
-                )}
-                {(quiz3Question2Answer == randomQuestionAnswerPair10.answer) && (quiz3Question3Answer != randomQuestionAnswerPair11.answer) && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  {quiz3Question3Answer == randomQuestionAnswerPair11.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz3Question2Answer == randomQuestionAnswerPair10.answer) && (quiz3Question3Answer != randomQuestionAnswerPair11.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
                 {quiz3Question3Answer == randomQuestionAnswerPair11.answer && (
                   <form action={quiz3Question4Handler}>
-                    <input
-                      value={randomQuestionAnswerPair12.question}
-                      onChange={() => { }}
-                      className="question"
-                    ></input>
-                    <input name="quiz3Question4" className="answer"></input>
-                    <button>Submit</button>
+                    <Center>
+                      <Wrap>
+                        <input
+                          value={randomQuestionAnswerPair12.question}
+                          onChange={() => { }}
+                          className="question"
+                        ></input>
+                        <input name="quiz3Question4" className="answer"></input>
+                        <button>Submit</button>
+                      </Wrap>
+                    </Center>
                   </form>
                 )}
-                {quiz3Question4Answer == randomQuestionAnswerPair12.answer && (
-                  <p>That is correct.</p>
-                )}
-                {(quiz3Question3Answer == randomQuestionAnswerPair11.answer) && (quiz3Question4Answer != randomQuestionAnswerPair12.answer) && (
-                  <p>That is incorrect.</p>
-                )}
+                <Center>
+                  {quiz3Question4Answer == randomQuestionAnswerPair12.answer && (
+                    <p>That is correct.</p>
+                  )}
+                  {(quiz3Question3Answer == randomQuestionAnswerPair11.answer) && (quiz3Question4Answer != randomQuestionAnswerPair12.answer) && (
+                    <p>That is incorrect.</p>
+                  )}
+                </Center>
               </>
             </Tabs.Content>
           </Tabs.Root>
