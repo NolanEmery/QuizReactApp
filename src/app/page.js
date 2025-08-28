@@ -2,20 +2,18 @@
 import { useState } from "react";
 import { numberQuestionArray, booleanQuestionArray, stringQuestionArray } from "./questions.js";
 import { Provider } from "@/components/ui/provider";
-import { Checkbox, Tabs, Slider, Wrap, Center, Button } from "@chakra-ui/react";
+import { Checkbox, Tabs, Slider, Wrap, Center, Button, Input } from "@chakra-ui/react";
+import { RiArrowRightLine } from 'react-icons/ri';
 
 export default function Home() {
-  const [showQuiz1, setShowQuiz1] = useState(false);
   const [quiz1Question1Answer, setQuiz1Question1Answer] = useState(0);
   const [quiz1Question2Answer, setQuiz1Question2Answer] = useState(0);
   const [quiz1Question3Answer, setQuiz1Question3Answer] = useState(0);
   const [quiz1Question4Answer, setQuiz1Question4Answer] = useState(0);
-  const [showQuiz2, setShowQuiz2] = useState(false);
   const [quiz2Question1Answer, setQuiz2Question1Answer] = useState("");
   const [quiz2Question2Answer, setQuiz2Question2Answer] = useState("");
   const [quiz2Question3Answer, setQuiz2Question3Answer] = useState("");
   const [quiz2Question4Answer, setQuiz2Question4Answer] = useState("");
-  const [showQuiz3, setShowQuiz3] = useState(false);
   const [quiz3Question1Answer, setQuiz3Question1Answer] = useState("");
   const [quiz3Question2Answer, setQuiz3Question2Answer] = useState("");
   const [quiz3Question3Answer, setQuiz3Question3Answer] = useState("");
@@ -107,10 +105,6 @@ export default function Home() {
   //<p> this is the question
   //<input> this is where the user types their response
   //<button> to submit
-  function quiz1Handler(formData) {
-    const quiz1Response = formData.get("quiz1");
-    setShowQuiz1(quiz1Response);
-  }
 
   function quiz1Question1Handler(formData) {
     const quiz1Question1Response = formData.get("quiz1Question1");
@@ -130,11 +124,6 @@ export default function Home() {
   function quiz1Question4Handler(formData) {
     const quiz1Question4Response = formData.get("quiz1Question4");
     setQuiz1Question4Answer(quiz1Question4Response);
-  }
-
-  function quiz2Handler(formData) {
-    const quiz2Response = formData.get("quiz2");
-    setShowQuiz2(quiz2Response);
   }
 
   function quiz2Question1Handler(formData) {
@@ -177,11 +166,6 @@ export default function Home() {
     }
   }
 
-  function quiz3Handler(formData) {
-    const quiz3Response = formData.get("quiz3");
-    setShowQuiz3(quiz3Response);
-  }
-
   function quiz3Question1Handler(formData) {
     const quiz3Question1Response = formData.get("quiz3Question1");
     setQuiz3Question1Answer(quiz3Question1Response);
@@ -207,7 +191,7 @@ export default function Home() {
     <html suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
         <Provider>
-          <Tabs.Root fitted>
+          <Tabs.Root fitted lazyMount unmountOnExit>
             <Tabs.List>
               <Tabs.Trigger
                 value="quiz1"
@@ -263,12 +247,12 @@ export default function Home() {
                 <form action={quiz1Question1Handler}>
                   <Center>
                     <Wrap>
-                      <input
+                      <Input
                         value={randomQuestionAnswerPair1.question}
                         onChange={() => { }}
                         className="question"
                         id="quiz1"
-                      ></input>
+                      ></Input>
                       <Slider.Root name="quiz1Question1" width="250px" max={200}>
                         <Slider.ValueText />
                         <Slider.Control>
@@ -279,7 +263,7 @@ export default function Home() {
                           <Slider.Marks marks={[{ value: 0, label: "0" }, { value: 50, label: "50" }, { value: 100, label: "100" }, { value: 150, label: "150" }, { value: 200, label: "200" }]} />
                         </Slider.Control>
                       </Slider.Root>
-                      <Button type="submit">Submit</Button>
+                      <Button type="submit">Submit <RiArrowRightLine /></Button>
                     </Wrap>
                   </Center>
                 </form>
@@ -297,12 +281,12 @@ export default function Home() {
                   <form action={quiz1Question2Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair2.question}
                           onChange={() => { }}
                           className="question"
                           id="quiz1"
-                        ></input>
+                        ></Input>
                         <Slider.Root name="quiz1Question2" width="250px" max={200}>
                           <Slider.ValueText />
                           <Slider.Control>
@@ -313,7 +297,7 @@ export default function Home() {
                             <Slider.Marks marks={[{ value: 0, label: "0" }, { value: 50, label: "50" }, { value: 100, label: "100" }, { value: 150, label: "150" }, { value: 200, label: "200" }]} />
                           </Slider.Control>
                         </Slider.Root>
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
@@ -332,12 +316,12 @@ export default function Home() {
                   <form action={quiz1Question3Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair3.question}
                           onChange={() => { }}
                           className="question"
                           id="quiz1"
-                        ></input>
+                        ></Input>
                         <Slider.Root name="quiz1Question3" width="250px" max={200}>
                           <Slider.ValueText />
                           <Slider.Control>
@@ -348,7 +332,7 @@ export default function Home() {
                             <Slider.Marks marks={[{ value: 0, label: "0" }, { value: 50, label: "50" }, { value: 100, label: "100" }, { value: 150, label: "150" }, { value: 200, label: "200" }]} />
                           </Slider.Control>
                         </Slider.Root>
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
@@ -367,12 +351,12 @@ export default function Home() {
                   <form action={quiz1Question4Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair4.question}
                           onChange={() => { }}
                           className="question"
                           id="quiz1"
-                        ></input>
+                        ></Input>
                         <Slider.Root name="quiz1Question4" width="250px" max={200}>
                           <Slider.ValueText />
                           <Slider.Control>
@@ -383,7 +367,7 @@ export default function Home() {
                             <Slider.Marks marks={[{ value: 0, label: "0" }, { value: 50, label: "50" }, { value: 100, label: "100" }, { value: 150, label: "150" }, { value: 200, label: "200" }]} />
                           </Slider.Control>
                         </Slider.Root>
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
@@ -405,11 +389,11 @@ export default function Home() {
                 <Center>
                   <form action={quiz2Question1Handler}>
                     <Wrap>
-                      <input
+                      <Input
                         value={randomQuestionAnswerPair5.question}
                         onChange={() => { }}
                         className="question"
-                      ></input>
+                      ></Input>
                       <Checkbox.Root name="quiz2Question1Pt1" variant="subtle" size="lg">
                         <Checkbox.HiddenInput />
                         <Checkbox.Label>T</Checkbox.Label>
@@ -426,7 +410,7 @@ export default function Home() {
                         </Checkbox.Control>
                         <Checkbox.Label />
                       </Checkbox.Root>
-                      <Button type="submit">Submit</Button>
+                      <Button type="submit">Submit <RiArrowRightLine /></Button>
                     </Wrap>
                   </form>
                 </Center>
@@ -442,11 +426,11 @@ export default function Home() {
                   <form action={quiz2Question2Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair6.question}
                           onChange={() => { }}
                           className="question"
-                        ></input>
+                        ></Input>
                         <Checkbox.Root name="quiz2Question2Pt1" variant="subtle" size="lg">
                           <Checkbox.HiddenInput />
                           <Checkbox.Label>T</Checkbox.Label>
@@ -463,7 +447,7 @@ export default function Home() {
                           </Checkbox.Control>
                           <Checkbox.Label />
                         </Checkbox.Root>
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
@@ -480,11 +464,11 @@ export default function Home() {
                   <form action={quiz2Question3Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair7.question}
                           onChange={() => { }}
                           className="question"
-                        ></input>
+                        ></Input>
                         <Checkbox.Root name="quiz2Question3Pt1" variant="subtle" size="lg">
                           <Checkbox.HiddenInput />
                           <Checkbox.Label>T</Checkbox.Label>
@@ -501,7 +485,7 @@ export default function Home() {
                           </Checkbox.Control>
                           <Checkbox.Label />
                         </Checkbox.Root>
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
@@ -518,11 +502,11 @@ export default function Home() {
                   <form action={quiz2Question4Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair8.question}
                           onChange={() => { }}
                           className="question"
-                        ></input>
+                        ></Input>
                         <Checkbox.Root name="quiz2Question4Pt1" variant="subtle" size="lg">
                           <Checkbox.HiddenInput />
                           <Checkbox.Label>T</Checkbox.Label>
@@ -539,7 +523,7 @@ export default function Home() {
                           </Checkbox.Control>
                           <Checkbox.Label />
                         </Checkbox.Root>
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
@@ -559,13 +543,13 @@ export default function Home() {
                 <form action={quiz3Question1Handler}>
                   <Center>
                     <Wrap>
-                      <input
+                      <Input
                         value={randomQuestionAnswerPair9.question}
                         onChange={() => { }}
                         className="question"
-                      ></input>
-                      <input name="quiz3Question1" className="answer"></input>
-                      <Button type="submit">Submit</Button>
+                      ></Input>
+                      <Input name="quiz3Question1" className="answer"></Input>
+                      <Button type="submit">Submit <RiArrowRightLine /></Button>
                     </Wrap>
                   </Center>
                 </form>
@@ -583,13 +567,13 @@ export default function Home() {
                   <form action={quiz3Question2Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair10.question}
                           onChange={() => { }}
                           className="question"
-                        ></input>
-                        <input name="quiz3Question2" className="answer"></input>
-                        <Button type="submit">Submit</Button>
+                        ></Input>
+                        <Input name="quiz3Question2" className="answer"></Input>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
@@ -608,13 +592,13 @@ export default function Home() {
                   <form action={quiz3Question3Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair11.question}
                           onChange={() => { }}
                           className="question"
-                        ></input>
-                        <input name="quiz3Question3" className="answer"></input>
-                        <Button type="submit">Submit</Button>
+                        ></Input>
+                        <Input name="quiz3Question3" className="answer"></Input>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
@@ -633,13 +617,13 @@ export default function Home() {
                   <form action={quiz3Question4Handler}>
                     <Center>
                       <Wrap>
-                        <input
+                        <Input
                           value={randomQuestionAnswerPair12.question}
                           onChange={() => { }}
                           className="question"
-                        ></input>
-                        <input name="quiz3Question4" className="answer"></input>
-                        <Button type="submit">Submit</Button>
+                        ></Input>
+                        <Input name="quiz3Question4" className="answer"></Input>
+                        <Button type="submit">Submit <RiArrowRightLine /></Button>
                       </Wrap>
                     </Center>
                   </form>
