@@ -4,6 +4,7 @@ import { numberQuestionArray, booleanQuestionArray, stringQuestionArray } from "
 import { Provider } from "@/components/ui/provider";
 import { Checkbox, Tabs, Slider, Wrap, Center, Button, Input } from "@chakra-ui/react";
 import { RiArrowRightLine } from 'react-icons/ri';
+import { Analytics } from "@vercel/analytics/next;
 
 export default function Home() {
   const [quiz1Question1Answer, setQuiz1Question1Answer] = useState(0);
